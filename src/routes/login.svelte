@@ -25,7 +25,10 @@
     
     onSubmit: async (values) => {
       try {
-        console.log(values);
+        await axios.get(`${import.meta.env.VITE_API_URL}/sanctum/csrf-cookie`);
+        const res = await axios.post(`${import.meta.env.VITE_API_URL}/users/login`, { email: values.email, password: values.password });
+        console.log(res.data);
+        goto("/");
       } catch (error) {
         console.log(error);
       }
