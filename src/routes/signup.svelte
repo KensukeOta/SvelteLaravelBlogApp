@@ -12,9 +12,9 @@
   import SubmitButton from "$lib/components/atoms/SubmitButton.svelte";
 
   const schema = object({
-    name: string().required("必須の項目です"),
+    name: string().required("必須の項目です").max(10, "10文字以内で入力してください"),
     email: string().email("メールアドレスの形式ではありません").required("必須の項目です"),
-    password: string().required("必須の項目です"),
+    password: string().required("必須の項目です").min(6, "6文字以上30文字以内で入力してください").max(30, "6文字以上30文字以内で入力してください"),
     password_confirmation: string().required("必須の項目です").oneOf([ref('password')], 'パスワードが一致しません'),
   });
   
