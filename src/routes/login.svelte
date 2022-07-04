@@ -9,7 +9,7 @@
   import PasswordArea from "$lib/components/molecules/PasswordArea.svelte";
   import SubmitButton from "$lib/components/atoms/SubmitButton.svelte";
 
-  let error: string;
+  let errorMsg: string;
 
   const schema = object({
     email: string().email("メールアドレスの形式ではありません").required("必須の項目です"),
@@ -29,8 +29,8 @@
         const res = await axios.post(`${import.meta.env.VITE_API_URL}/users/login`, { email: values.email, password: values.password });
         console.log(res.data);
         goto("/");
-      } catch (error) {
-        console.log(error);
+      } catch (error: any) {
+        errorMsg = error.response.data.message;
       }
     },
   });
@@ -42,8 +42,8 @@
 
 <h1 class="font-bold">ログインフォーム</h1>
 <form use:form>
-  {#if error}
-    <p class="text-red-500">{error}</p>
+  {#if errorMsg}
+    <p class="text-red-500">{errorMsg}</p>
   {/if}
   <dl>
     <EmailArea />
