@@ -53,19 +53,19 @@
   <dl>
     <NameArea />
     {#if $errors.name}
-    <p class="text-red-500">{$errors.name}</p>
+      <p class="text-red-500">{$errors.name}</p>
     {/if}
     <EmailArea />
     {#if $errors.email}
-    <p class="text-red-500">{$errors.email}</p>
+      <p class="text-red-500">{$errors.email}</p>
     {/if}
     <PasswordArea />
     {#if $errors.password}
-    <p class="text-red-500">{$errors.password}</p>
+      <p class="text-red-500">{$errors.password}</p>
     {/if}
     <PasswordConfirmArea />
     {#if $errors.password_confirmation}
-    <p class="text-red-500">{$errors.password_confirmation}</p>
+      <p class="text-red-500">{$errors.password_confirmation}</p>
     {/if}
     <SubmitButton disabled={$isSubmitting}>登録</SubmitButton>
   </dl>
