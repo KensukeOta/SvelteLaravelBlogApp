@@ -11,6 +11,8 @@
   import PasswordConfirmArea from "$lib/components/molecules/PasswordConfirmArea.svelte";
   import SubmitButton from "$lib/components/atoms/SubmitButton.svelte";
 
+  let errorMsg: string;
+
   const schema = object({
     name: string().required("必須の項目です").max(10, "10文字以内で入力してください"),
     email: string().email("メールアドレスの形式ではありません").required("必須の項目です"),
@@ -31,8 +33,8 @@
       try {
         await axios.post(`${import.meta.env.VITE_API_URL}/api/users/create`, { name: values.name, email: values.email, password: values.password, password_confirmation: values.password_confirmation });
         goto("/");
-      } catch (error) {
-        console.log(error);
+      } catch (error: any) {
+        errorMsg = error.response.data.message;
       }
     },
   });
@@ -45,6 +47,9 @@
 <h1 class="font-bold">ユーザー登録フォーム</h1>
 
 <form use:form>
+  {#if errorMsg}
+    <p class="text-red-500">{errorMsg}</p>
+  {/if}
   <dl>
     <NameArea />
     {#if $errors.name}
