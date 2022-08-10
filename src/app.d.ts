@@ -4,8 +4,12 @@
 // for information about these interfaces
 // and what to do when importing types
 declare namespace App {
-	// interface Locals {}
+	interface Locals {
+		user: import("$lib/types/User").User;
+	}
 	// interface Platform {}
-	// interface Session {}
+	interface Session {
+		user: import("$lib/types/User").User;
+	}
 	// interface Stuff {}
 }

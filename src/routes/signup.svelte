@@ -31,10 +31,10 @@
 
     onSubmit: async (values) => {
       try {
-        await axios.post(`${import.meta.env.VITE_API_URL}/api/users/create`, { name: values.name, email: values.email, password: values.password, password_confirmation: values.password_confirmation });
-        goto("/");
+        await axios.post(`/signup`, { name: values.name, email: values.email, password: values.password, password_confirmation: values.password_confirmation });
+        goto("/", { replaceState: true });
       } catch (error: any) {
-        errorMsg = error.response.data.message;
+        errorMsg = error.response.data.errorMsg;
       }
     },
   });
