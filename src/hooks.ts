@@ -1,5 +1,5 @@
+import type { Handle } from "@sveltejs/kit";
 import { axios } from "$lib/axios";
-import type { GetSession, Handle } from "@sveltejs/kit";
 
 export const handle: Handle = async ({ event, resolve }) => {
   try {
@@ -13,14 +13,3 @@ export const handle: Handle = async ({ event, resolve }) => {
 
   return response;
 };
-
-export const getSession: GetSession = (event) => {
-  return event.locals.user
-    ? {
-      user: {
-        name: event.locals.user.name,
-        email: event.locals.user.email,
-      }
-    }
-    : {};
-}
