@@ -1,5 +1,5 @@
 <script lang="ts">
-  // import { session } from "$app/stores";
+  import { page } from "$app/stores";
 </script>
 
 <svelte:head>
@@ -7,4 +7,4 @@
 </svelte:head>
 
 <h1 class="font-bold">トップページ</h1>
-<!-- <p>Welcome {$session.user ? $session.user.name : "stranger"}</p> -->
+<p>Welcome! {$page.data.user ? $page.data.user.name : "stranger"}</p>

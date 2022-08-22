@@ -16,7 +16,6 @@
 	"devDependencies": {
 		"@playwright/test": "^1.23.4",
 		"@sveltejs/adapter-auto": "next",
-		"@sveltejs/kit": "^1.0.0-next.377",
 		"@typescript-eslint/eslint-plugin": "^5.30.6",
 		"@typescript-eslint/parser": "^5.30.6",
 		"autoprefixer": "^10.4.7",
@@ -37,6 +36,7 @@
 	"type": "module",
 	"dependencies": {
 		"@felte/validator-yup": "^1.0.8",
+		"@sveltejs/kit": "^1.0.0-next.428",
 		"axios": "^0.27.2",
 		"felte": "^1.2.2",
 		"yup": "^0.32.11"
