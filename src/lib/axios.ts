@@ -4,6 +4,7 @@ export const axios = Axios.create({
   withCredentials: true,
   headers: {
     'X-Requested-With': 'XMLHttpRequest',
-    accept: "application/json"
+    accept: "application/json",
+    "Content-Type": "application/json",
   },
 });
