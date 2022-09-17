@@ -7,6 +7,8 @@ declare namespace App {
 	interface Locals {
 		user: import("$lib/types/User").User;
 	}
-	// interface PageData {}
+	interface PageData {
+		user: import("$lib/types/User").User;
+	}
 	// interface Platform {}
 }

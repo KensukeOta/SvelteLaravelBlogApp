@@ -1,6 +1,14 @@
-import type { Actions, ActionData } from "./$types";
+import type { Actions, ActionData, PageServerLoad } from "./$types";
 import { invalid, redirect } from "@sveltejs/kit";
 import { axios } from "$lib/axios";
+
+export const load: PageServerLoad = async ({ parent }) => {
+  const { user } = await parent();
+
+  return {
+    user: user,
+  };
+};
 
 export const actions: Actions = {
   default: async ({ request, cookies }) => {
