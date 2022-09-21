@@ -1,11 +1,12 @@
 <script lang="ts">
+	import type { ActionData } from "./$types";
   import { enhance, applyAction } from "$app/forms";
   import { goto } from "$app/navigation";
   import { axios } from "$lib/axios";
   import EmailArea from "$lib/components/molecules/EmailArea.svelte";
   import PasswordArea from "$lib/components/molecules/PasswordArea.svelte";
 
-  export let form: any;
+  export let form: ActionData;
 </script>
 
 <svelte:head>

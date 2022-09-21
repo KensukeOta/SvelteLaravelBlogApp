@@ -1,10 +1,11 @@
 <script lang="ts">
+	import type { ActionData } from "./$types";
   import NameArea from "$lib/components/molecules/NameArea.svelte";
   import EmailArea from "$lib/components/molecules/EmailArea.svelte";
   import PasswordArea from "$lib/components/molecules/PasswordArea.svelte";
   import PasswordConfirmArea from "$lib/components/molecules/PasswordConfirmArea.svelte";
 
-  export let form: any;
+  export let form: ActionData;
 </script>
 
 <svelte:head>
