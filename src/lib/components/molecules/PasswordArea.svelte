@@ -3,9 +3,5 @@
   import PasswordInput from "../atoms/PasswordInput.svelte";
 </script>
 
-<dt>
-  <Label For="password">パスワード</Label>
-</dt>
-<dd>
-  <PasswordInput />
-</dd>
+<Label For="password">パスワード</Label>
+<PasswordInput />

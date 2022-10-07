@@ -37,7 +37,7 @@
 	"dependencies": {
 		"@felte/validator-yup": "^1.0.8",
 		"@sveltejs/kit": "^1.0.0-next.431",
-		"axios": "^0.27.2",
+		"axios": "^1.0.0",
 		"felte": "^1.2.2",
 		"yup": "^0.32.11"
 	}

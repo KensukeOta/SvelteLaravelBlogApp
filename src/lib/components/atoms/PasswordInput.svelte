@@ -2,4 +2,4 @@
   
 </script>
 
-<input type="password" name="password" id="password" placeholder="パスワード" class="border" />
+<input type="password" name="password" id="password" placeholder="パスワード" class="border block" />

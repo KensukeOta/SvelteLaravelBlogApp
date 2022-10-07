@@ -1,4 +1,4 @@
-import type { Actions, ActionData, PageServerLoad } from "./$types";
+import type { Actions, PageServerLoad } from "./$types";
 import { invalid, redirect } from "@sveltejs/kit";
 import { axios } from "$lib/axios";
 

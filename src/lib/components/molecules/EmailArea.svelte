@@ -5,9 +5,5 @@
   export let email: any;
 </script>
 
-<dt>
-  <Label For="email">メールアドレス</Label>
-</dt>
-<dd>
-  <EmailInput email={email}/>
-</dd>
+<Label For="email">メールアドレス</Label>
+<EmailInput email={email}/>

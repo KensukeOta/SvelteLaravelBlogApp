@@ -2,4 +2,4 @@
   export let email: any;
 </script>
 
-<input type="email" name="email" id="email" value={email} placeholder="メールアドレス" class="border" />
+<input type="email" name="email" id="email" value={email} placeholder="メールアドレス" class="border block" />

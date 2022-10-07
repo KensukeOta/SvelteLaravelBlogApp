@@ -5,9 +5,5 @@
   export let name: any
 </script>
 
-<dt>
-  <Label For="name">名前</Label>
-</dt>
-<dd>
-  <NameInput name={name} />
-</dd>
+<Label For="name">名前</Label>
+<NameInput name={name} />

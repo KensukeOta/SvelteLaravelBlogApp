@@ -3,9 +3,5 @@
   import PasswordConfirmInput from "../atoms/PasswordConfirmInput.svelte";
 </script>
 
-<dt>
-  <Label For="password_confirmation">パスワード確認</Label>
-</dt>
-<dd>
-  <PasswordConfirmInput />
-</dd>
+<Label For="password_confirmation">パスワード確認</Label>
+<PasswordConfirmInput />

@@ -15,14 +15,15 @@
 <h1 class="font-bold">ユーザー登録フォーム</h1>
 
 <form method="post">
-  {#if form?.errors}
-    <p class="text-red-500">{form.errors}</p>
-  {/if}
-  <dl>
+  <fieldset class="border w-0">
+    <legend>登録</legend>
+    {#if form?.errors}
+      <p class="text-red-500">{form.errors}</p>
+    {/if}
     <NameArea name={form?.name ?? ""} />
     <EmailArea email={form?.email ?? ""} />
     <PasswordArea />
     <PasswordConfirmArea />
     <button type="submit">登録</button>
-  </dl>
+  </fieldset>
 </form>
