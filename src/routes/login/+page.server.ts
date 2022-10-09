@@ -5,6 +5,10 @@ import { axios } from "$lib/axios";
 export const load: PageServerLoad = async ({ parent }) => {
   const { user } = await parent();
 
+  if (user.name) {
+    throw redirect(307, "/");
+  }
+
   return {
     user: user,
   };

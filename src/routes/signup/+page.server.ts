@@ -1,6 +1,18 @@
-import type { Actions } from "./$types";
+import type { Actions, PageServerLoad } from "./$types";
 import { invalid, redirect } from "@sveltejs/kit";
 import { axios } from "$lib/axios";
+
+export const load: PageServerLoad = async ({ parent }) => {
+  const { user } = await parent();
+
+  if (user.name) {
+    throw redirect(307, "/");
+  }
+
+  return {
+    user: user,
+  };
+};
 
 export const actions: Actions = {
   default: async ({ request }) => {
