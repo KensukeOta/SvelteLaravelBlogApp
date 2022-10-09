@@ -8,4 +8,4 @@
 
 <h1 class="font-bold">トップページ</h1>
 
-<p>Welcome! {$page.data.user ? $page.data.user.name : "stranger"}</p>
+<p>Welcome! {$page.data.user.name ? $page.data.user.name : "stranger"}</p>

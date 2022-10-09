@@ -1,11 +1,12 @@
 import type { Handle } from "@sveltejs/kit";
-import { axios } from "$lib/axios";
 
 export const handle: Handle = async ({ event, resolve }) => {
   if (!event.locals.user) {
     try {
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/user`, { headers: { Cookie: event.request.headers.get("cookie") ?? "", referer: event.request.headers.get("referer") ?? "" } });
-      event.locals.user = await res.data;
+      const res = await event.fetch(`${import.meta.env.VITE_API_URL}/api/user`, {
+        headers: { Accept: "application/json" }
+      });
+      event.locals.user = await res.json();
     } catch (error) {
       console.log(error);
     }

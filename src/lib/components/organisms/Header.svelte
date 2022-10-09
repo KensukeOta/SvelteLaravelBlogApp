@@ -7,7 +7,7 @@
   <a href="/">SvelteLaravelBlogApp</a>
 
   <nav>
-    {#if !$page.data.user}
+    {#if !$page.data.user.name}
     <a href="/signup">新規登録</a>
     <a href="/login">ログイン</a>
     {:else}
