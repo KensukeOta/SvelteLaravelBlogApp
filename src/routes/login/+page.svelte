@@ -10,7 +10,7 @@
   export let form: ActionData;
 
   const login: SubmitFunction = ({ data }) => {
-    return async ({ result }) => {
+    return async ({ result, update }) => {
       try {
         await axios.get(`${import.meta.env.VITE_API_URL}/sanctum/csrf-cookie`);
         await axios.post(`${import.meta.env.VITE_API_URL}/users/login`, { email: data.get("email"), password: data.get("password") });
