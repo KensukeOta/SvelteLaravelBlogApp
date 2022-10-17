@@ -1,7 +1,10 @@
 <script lang="ts">
+	import type { PageData } from "./$types";
   import { page } from "$app/stores";
 	import PostLinkButton from "$lib/components/atoms/PostLinkButton.svelte";
 	import PostItem from "$lib/components/organisms/PostItem.svelte";
+
+  export let data: PageData;
 </script>
 
 <svelte:head>
@@ -17,5 +20,9 @@
 </nav>
 
 <main>
-  <PostItem />
+  {#each data.posts as post (post.id)}
+    <PostItem post={post} />
+  {:else}
+    <p class="font-bold text-center p-2">記事が投稿されていません</p>
+  {/each}
 </main>
