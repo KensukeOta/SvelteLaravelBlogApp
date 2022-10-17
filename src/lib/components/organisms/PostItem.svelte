@@ -13,7 +13,7 @@
     by {post.user.name}
     {#if $page.data.user.name && $page.data.user.id === post.user_id}
       <EditLinkButton post={post} />
-      <PostDeleteButton />
+      <PostDeleteButton post={post} />
     {/if}
   </nav>
 </article>
