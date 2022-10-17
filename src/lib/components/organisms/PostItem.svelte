@@ -1,5 +1,7 @@
 <script lang="ts">
 	import type { Post } from "$lib/types/Post";
+  import { page } from "$app/stores";
+  import EditLinkButton from "../atoms/EditLinkButton.svelte";
 
   export let post: Post
 </script>
@@ -8,6 +10,8 @@
   <a href={`${post.user.name}/posts/${post.id}`}><h1 class="font-bold">{post.title}</h1></a>
   <nav class="flex justify-between">
     by {post.user.name}
-    <a href={`${post.user.name}/posts/${post.id}/edit`} class="text-green-500">更新</a>
+    {#if $page.data.user.name && $page.data.user.id === post.user_id}
+      <EditLinkButton post={post} />
+    {/if}
   </nav>
 </article>
