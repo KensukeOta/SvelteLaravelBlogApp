@@ -28,7 +28,5 @@ export const actions: Actions = {
     if (errors) {
       return invalid(400, { email: values.get("email"), errors: errors });
     }
-
-    throw redirect(303, "/");
   }
 };
