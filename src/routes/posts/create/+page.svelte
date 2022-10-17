@@ -1,5 +1,7 @@
 <script lang="ts">
-	import PostArea from "$lib/components/molecules/PostArea.svelte";
+  import { page } from "$app/stores"
+	import UserIdInput from "$lib/components/atoms/UserIdInput.svelte";
+  import PostArea from "$lib/components/molecules/PostArea.svelte";
   import TitleArea from "$lib/components/molecules/TitleArea.svelte";
 </script>
 
@@ -12,5 +14,6 @@
 <form method="POST">
   <TitleArea />
   <PostArea />
+  <UserIdInput id={$page.data.user.id} />
   <button type="submit">投稿する</button>
 </form>
