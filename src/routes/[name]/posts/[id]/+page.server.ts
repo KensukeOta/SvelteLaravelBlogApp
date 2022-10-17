@@ -1,5 +1,4 @@
 import type { PageServerLoad } from "./$types";
-import { error } from "@sveltejs/kit";
 import { axios } from "$lib/axios";
 
 export const load: PageServerLoad = async ({ parent, params }) => {
