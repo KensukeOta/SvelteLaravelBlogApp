@@ -1,5 +1,6 @@
 <script lang="ts">
   import { page } from "$app/stores";
+	import PostLinkButton from "$lib/components/atoms/PostLinkButton.svelte";
 </script>
 
 <svelte:head>
@@ -9,3 +10,7 @@
 <h1 class="font-bold">トップページ</h1>
 
 <p>Welcome! {$page.data.user.name ? $page.data.user.name : "stranger"}</p>
+
+<nav class="text-center">
+  <PostLinkButton />
+</nav>
