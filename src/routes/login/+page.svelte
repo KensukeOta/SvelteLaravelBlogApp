@@ -7,7 +7,16 @@
   import EmailArea from "$lib/components/molecules/EmailArea.svelte";
   import PasswordArea from "$lib/components/molecules/PasswordArea.svelte";
 
+  let isSubmitting: boolean = false;
+
   export let form: ActionData;
+
+  const disabledSubmit = () => {
+    isSubmitting = !isSubmitting;
+    setTimeout(() => {
+      isSubmitting = false;
+    }, 3000);
+  };
 
   const login: SubmitFunction = ({ data }) => {
     return async ({ result, update }) => {
@@ -28,7 +37,7 @@
 
 <h1 class="font-bold">ログインフォーム</h1>
 
-<form method="POST" use:enhance={login}>
+<form method="POST" on:submit={disabledSubmit} use:enhance={login}>
   <fieldset class="border w-0">
     <legend>ログイン</legend>
     {#if form?.errors}
@@ -36,6 +45,6 @@
     {/if}
     <EmailArea email={form?.email ?? ""} />
     <PasswordArea />
-    <button type="submit">ログイン</button>
+    <button type="submit" disabled={isSubmitting}>ログイン</button>
   </fieldset>
 </form>

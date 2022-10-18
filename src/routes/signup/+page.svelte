@@ -3,12 +3,23 @@
   import type { SubmitFunction } from "$app/forms";
   import { applyAction } from "$app/forms";
 	import { enhance } from "$app/forms";
-	import { goto } from "$app/navigation";
+	import { goto, invalidateAll } from "$app/navigation";
 	import { axios } from "$lib/axios";
   import NameArea from "$lib/components/molecules/NameArea.svelte";
   import EmailArea from "$lib/components/molecules/EmailArea.svelte";
   import PasswordArea from "$lib/components/molecules/PasswordArea.svelte";
   import PasswordConfirmArea from "$lib/components/molecules/PasswordConfirmArea.svelte";
+
+  let isSubmitting: boolean = false;
+
+  export let form: ActionData;
+
+  const disabledSubmit = () => {
+    isSubmitting = !isSubmitting;
+    setTimeout(() => {
+      isSubmitting = false;
+    }, 3000);
+  };
 
   const register: SubmitFunction = ({ data }) => {
     return async ({ result, update }) => {
@@ -18,8 +29,6 @@
       goto("/", { replaceState: true });
     }
   };
-
-  export let form: ActionData;
 </script>
 
 <svelte:head>
@@ -28,7 +37,7 @@
 
 <h1 class="font-bold">ユーザー登録フォーム</h1>
 
-<form method="post" use:enhance={register}>
+<form method="POST" on:submit={disabledSubmit} use:enhance={register}>
   <fieldset class="border w-0">
     <legend>登録</legend>
     {#if form?.errors}
@@ -38,6 +47,6 @@
     <EmailArea email={form?.email ?? ""} />
     <PasswordArea />
     <PasswordConfirmArea />
-    <button type="submit">登録</button>
+    <button type="submit" disabled={isSubmitting}>登録</button>
   </fieldset>
 </form>
