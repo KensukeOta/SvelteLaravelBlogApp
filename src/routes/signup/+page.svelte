@@ -3,7 +3,7 @@
   import type { SubmitFunction } from "$app/forms";
   import { applyAction } from "$app/forms";
 	import { enhance } from "$app/forms";
-	import { goto, invalidateAll } from "$app/navigation";
+	import { goto } from "$app/navigation";
 	import { axios } from "$lib/axios";
   import NameArea from "$lib/components/molecules/NameArea.svelte";
   import EmailArea from "$lib/components/molecules/EmailArea.svelte";
@@ -24,7 +24,6 @@
   const register: SubmitFunction = ({ data }) => {
     return async ({ result, update }) => {
       await applyAction(result);
-      console.log(result);
 
       if (result.type === "success") {
         await axios.get(`${import.meta.env.VITE_API_URL}/sanctum/csrf-cookie`);
