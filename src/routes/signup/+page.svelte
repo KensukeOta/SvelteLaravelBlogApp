@@ -24,8 +24,9 @@
   const register: SubmitFunction = ({ data }) => {
     return async ({ result, update }) => {
       await applyAction(result);
+      console.log(result);
 
-      if (result.type !== "invalid") {
+      if (result.type === "success") {
         await axios.get(`${import.meta.env.VITE_API_URL}/sanctum/csrf-cookie`);
         await axios.post(`${import.meta.env.VITE_API_URL}/users/login`, { email: data.get("email"), password: data.get("password") });
         goto("/", { replaceState: true });
