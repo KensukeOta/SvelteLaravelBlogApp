@@ -24,10 +24,13 @@
   const register: SubmitFunction = ({ data }) => {
     return async ({ result, update }) => {
       await applyAction(result);
-      await axios.get(`${import.meta.env.VITE_API_URL}/sanctum/csrf-cookie`);
-      await axios.post(`${import.meta.env.VITE_API_URL}/users/login`, { email: data.get("email"), password: data.get("password") });
-      goto("/", { replaceState: true });
-    }
+
+      if (result.type !== "invalid") {
+        await axios.get(`${import.meta.env.VITE_API_URL}/sanctum/csrf-cookie`);
+        await axios.post(`${import.meta.env.VITE_API_URL}/users/login`, { email: data.get("email"), password: data.get("password") });
+        goto("/", { replaceState: true });
+      }
+    };
   };
 </script>
 
