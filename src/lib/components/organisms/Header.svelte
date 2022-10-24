@@ -3,13 +3,15 @@
   import LogoutButton from "../atoms/LogoutButton.svelte";
 </script>
 
-<header class="flex justify-between border-b">
-  <a href="/">SvelteLaravelBlogApp</a>
+<header class="flex justify-between border-b items-center">
+  <a href="/" class="leading-9">
+    <h1 class="font-bold">SvelteLaravelBlogApp</h1>
+  </a>
 
   <nav>
     {#if !$page.data.user.name}
-    <a href="/signup">新規登録</a>
-    <a href="/login">ログイン</a>
+    <a href="/signup" class="inline-block leading-9">新規登録</a>
+    <a href="/login" class="inline-block leading-9">ログイン</a>
     {:else}
     <LogoutButton />
     {/if}
