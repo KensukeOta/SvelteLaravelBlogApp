@@ -9,4 +9,4 @@
   };
 </script>
 
-<button on:click={logout}>ログアウト</button>
+<button on:click={logout} class="leading-9">ログアウト</button>
