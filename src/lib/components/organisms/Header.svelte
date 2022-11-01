@@ -1,12 +1,15 @@
 <script lang="ts">
   import { page } from "$app/stores";
   import LogoutButton from "../atoms/LogoutButton.svelte";
+	import SearchInput from "../atoms/SearchInput.svelte";
 </script>
 
 <header class="flex justify-between border-b items-center">
   <a href="/" class="leading-9">
     <h1 class="font-bold">SvelteLaravelBlogApp</h1>
   </a>
+
+  <SearchInput />
 
   <nav>
     {#if !$page.data.user.name}
