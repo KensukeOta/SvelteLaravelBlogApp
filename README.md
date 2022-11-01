@@ -8,11 +8,13 @@ SvelteKitを使用した完全SPAのブログアプリです。
 https://github.com/KensukeOta/API-for-SvelteLaravelBlogApp
 - フロントエンド: __SvelteKit__
 - UIコンポーネントライブラリ: __Tailwind CSS__
+- 認証ライブラリ __Laravel Sanctum__
+- ページネーションライブラリ: __svelte-paginate 0.1.0__
 - HTTPクライアント: __axios__
 - コンポーネント設計: __Atomic Design__
 - バージョン管理ツール: __Git__ / __GitHub__
 - タスク管理: __GitHub Issues__
-- その他言語: __Svelte3.51.0__, __TypeScript4.8.4__, __HTML/CSS__
+- その他言語: __Svelte3.52.0__, __TypeScript4.8.4__, __HTML/CSS__
 
 ## 機能
 - ログイン機能
@@ -23,3 +25,4 @@ https://github.com/KensukeOta/API-for-SvelteLaravelBlogApp
 - 記事更新機能
 - 記事削除機能
 - ページネーション機能
+- リアルタイム記事検索機能
