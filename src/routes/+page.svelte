@@ -3,7 +3,6 @@
   import { page } from "$app/stores";
   import { paginate, LightPaginationNav } from "svelte-paginate";
   import { searchKeyword } from "$lib/stores/searchKeyword";
-  import { filteredPosts } from "$lib/utils/searchFunction";
 	import PostLinkButton from "$lib/components/atoms/PostLinkButton.svelte";
 	import PostItem from "$lib/components/organisms/PostItem.svelte";
 
@@ -11,7 +10,23 @@
 
   let currentPage = 1;
   let pageSize = 5;
-  $: items = filteredPosts($searchKeyword, data);
+
+  const filteredPosts = (keyword: string) => {
+    let posts = [];
+
+    for(let i = 0; i < data.posts.length; i++) {
+      const post = data.posts[i];
+
+      if (post.title.indexOf(keyword) !== -1 || post.user.name.indexOf(keyword) !== -1) {
+        posts.push(post);
+        currentPage = 1;
+      }
+    }
+
+    return posts;
+  };
+
+  $: items = filteredPosts($searchKeyword);
   $: paginatedItems = paginate({items, pageSize, currentPage})
 </script>
 
