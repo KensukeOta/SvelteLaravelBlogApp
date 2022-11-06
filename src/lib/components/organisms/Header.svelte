@@ -9,7 +9,9 @@
     <h1 class="font-bold">SvelteLaravelBlogApp</h1>
   </a>
 
-  <SearchInput />
+  {#if $page.url.pathname === "/"}
+    <SearchInput />
+  {/if}
 
   <nav>
     {#if !$page.data.user.name}
