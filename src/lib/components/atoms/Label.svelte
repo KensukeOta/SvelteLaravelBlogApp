@@ -5,6 +5,6 @@
   export let For: string;
 </script>
 
-<label for={For}>
+<label for={For} class="block mt-2">
   <slot></slot> {#if $page.url.pathname === "/signup"}<RequiredText />{/if}
 </label>

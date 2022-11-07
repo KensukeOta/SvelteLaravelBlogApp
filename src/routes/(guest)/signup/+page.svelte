@@ -41,7 +41,7 @@
 <h1 class="font-bold">ユーザー登録フォーム</h1>
 
 <form method="POST" on:submit={disabledSubmit} use:enhance={register}>
-  <fieldset class="border w-0">
+  <fieldset class="border mx-auto p-4 rounded-lg text-center w-screen">
     <legend>登録</legend>
     {#if form?.errors}
       <p class="text-red-500">{form.errors}</p>
