@@ -7,7 +7,8 @@ SvelteKitを使用した完全SPAのブログアプリです。
 - バックエンド: __Laravel9.19.0__
 https://github.com/KensukeOta/API-for-SvelteLaravelBlogApp
 - フロントエンド: __SvelteKit__
-- UIコンポーネントライブラリ: __Tailwind CSS__
+- CSSフレームワーク: __Tailwind CSS__
+- アイコンライブラリ: __Bootstrap Icons__
 - 認証ライブラリ __Laravel Sanctum__
 - ページネーションライブラリ: __svelte-paginate 0.1.0__
 - HTTPクライアント: __axios__
