@@ -7,7 +7,7 @@
 
 <form method="GET" action="?/post_search" class={`${isShow ? "block" : "hidden"} lg:flex`} use:enhance>
   <SearchInput />
-  <button type="submit" class="hidden lg:inline-block ml-1">
-    <i title="検索" class="bi bi-search"></i>
+  <button type="submit" title="検索" class="hidden bg-gray-100 border border-l-0 px-2 rounded-r-lg text-center hover:bg-gray-200 lg:inline-block">
+    <i class="bi bi-search"></i>
   </button>
 </form>
