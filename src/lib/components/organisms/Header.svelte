@@ -12,7 +12,10 @@
 
 <header class="flex justify-between border-b items-center relative">
   <a href="/" class="leading-9">
-    <h1 class="font-bold">SvelteLaravelBlogApp</h1>
+    <img src="/svelte-logo.svg" alt="svelte logo" width="24" height="24" class="inline-block" />
+    <h1 class="hidden font-bold lg:inline-block">
+      SvelteLaravelBlogApp
+    </h1>
   </a>
 
   {#if $page.url.pathname === "/"}
