@@ -38,13 +38,13 @@
 <h1 class="font-bold">ログインフォーム</h1>
 
 <form method="POST" on:submit={disabledSubmit} use:enhance={login}>
-  <fieldset class="border mx-auto p-4 rounded-lg text-center w-screen">
-    <legend>ログイン</legend>
+  <fieldset class="border mx-auto p-4 pt-2 rounded-lg text-center w-screen">
+    <legend class="font-bold px-2">ログイン</legend>
     {#if form?.errors}
       <p class="text-red-500">{form.errors}</p>
     {/if}
     <EmailArea email={form?.email ?? ""} />
     <PasswordArea />
-    <button type="submit" disabled={isSubmitting}>ログイン</button>
+    <button type="submit" disabled={isSubmitting} class="border bg-red-400 rounded-3xl w-1/3 text-white py-2 mt-2 hover:bg-red-300">ログイン</button>
   </fieldset>
 </form>
