@@ -1,7 +1,7 @@
 <script lang="ts">
   import { page } from "$app/stores";
   import LogoutButton from "../atoms/LogoutButton.svelte";
-	import PostSearchForm from "../molecules/PostSearchForm.svelte";
+	import PostSearchForm from "./PostSearchForm.svelte";
 
   let isShow = false;
 

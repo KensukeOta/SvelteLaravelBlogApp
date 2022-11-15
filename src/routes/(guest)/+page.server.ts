@@ -1,5 +1,4 @@
-import type { Actions, PageServerLoad } from "./$types"
-import { invalid } from "@sveltejs/kit";
+import type { PageServerLoad } from "./$types"
 import { axios } from "$lib/axios";
 
 export const load: PageServerLoad = async ({ parent }) => {
@@ -11,13 +10,4 @@ export const load: PageServerLoad = async ({ parent }) => {
     user: user,
     posts: posts,
   };
-};
-
-export const actions: Actions = {
-  post_search: async ({ request }) => {
-    const values = await request.formData();
-    const search = values.get("q");
-
-    return invalid(200, { search });
-  },
 };
