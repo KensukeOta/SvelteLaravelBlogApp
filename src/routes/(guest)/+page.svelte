@@ -42,7 +42,7 @@
   <PostLinkButton />
 </nav>
 
-<main>
+<main class="mt-2">
   {#each paginatedItems as post, idx (post.id)}
     <PostItem post={post} />
   {:else}
