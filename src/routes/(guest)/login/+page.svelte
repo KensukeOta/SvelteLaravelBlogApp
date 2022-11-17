@@ -37,8 +37,8 @@
 
 <h1 class="font-bold">ログインフォーム</h1>
 
-<form method="POST" on:submit={disabledSubmit} use:enhance={login} class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-  <fieldset class="border-2 border-red-400 mx-auto p-4 pt-2 rounded-3xl text-center w-screen">
+<form method="POST" on:submit={disabledSubmit} use:enhance={login} class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center w-screen">
+  <fieldset class="border-2 border-red-400 p-4 pt-2 rounded-3xl">
     <legend class="font-bold px-2">ログイン</legend>
     {#if form?.errors}
       <p class="text-red-500">{form.errors}</p>
