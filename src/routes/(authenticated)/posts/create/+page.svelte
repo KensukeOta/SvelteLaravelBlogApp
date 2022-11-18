@@ -2,14 +2,32 @@
 	import type { ActionData } from "./$types";
   import { page } from "$app/stores"
 	import { enhance } from "$app/forms";
-	import UserIdInput from "$lib/components/atoms/UserIdInput.svelte";
   import PostArea from "$lib/components/molecules/PostArea.svelte";
   import TitleArea from "$lib/components/molecules/TitleArea.svelte";
+	import Input from "$lib/components/atoms/Input.svelte";
 	import SubmitButton from "$lib/components/atoms/SubmitButton.svelte";
 
   let isSubmitting: boolean = false;
 
   export let form: ActionData;
+
+  const titleProps = {
+    type: "text",
+    name: "title",
+    id: "title",
+    value: `${form?.title ?? ""}`,
+    placeholder: "タイトル",
+    className: `block border`,
+  };
+
+  const userIdProps = {
+    type: "hidden",
+    name: "user_id",
+    id: "user_id",
+    value: `${$page.data.user.id}`,
+    placeholder: "",
+    className: ``,
+  };
 
   const disabledSubmit = () => {
     isSubmitting = !isSubmitting;
@@ -29,8 +47,8 @@
   {#if form?.errors}
     <p class="text-red-500">{form.errors}</p>
   {/if}
-  <TitleArea title={form?.title ?? ""} />
+  <TitleArea {...titleProps} />
   <PostArea body={form?.body ?? ""} />
-  <UserIdInput id={$page.data.user.id} />
+  <Input {...userIdProps} />
   <SubmitButton disabled={isSubmitting} className="w-48">投稿する</SubmitButton>
 </form>

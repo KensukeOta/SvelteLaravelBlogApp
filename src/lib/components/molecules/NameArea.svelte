@@ -1,9 +1,23 @@
 <script lang="ts">
+  import Input from "../atoms/Input.svelte";
   import Label from "../atoms/Label.svelte";
-  import NameInput from "../atoms/NameInput.svelte";
 
-  export let name: any
+  export let type: string;
+  export let name: string;
+  export let id: string;
+  export let value: string | number;
+  export let placeholder: string;
+  export let className: string;
+
+  const nameProps = {
+    type: type,
+    name: name,
+    id: id,
+    value: value,
+    placeholder: placeholder,
+    className: className,
+  };
 </script>
 
 <Label For="name">名前</Label>
-<NameInput name={name} />
+<Input {...nameProps} />

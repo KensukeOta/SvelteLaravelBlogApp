@@ -15,6 +15,42 @@
 
   export let form: ActionData;
 
+  const nameProps = {
+    type: "text",
+    name: "name",
+    id: "name",
+    value: `${form?.name ?? ""}`,
+    placeholder: "名前",
+    className: `border block mx-auto p-2 rounded-3xl w-4/5`,
+  };
+
+  const emailProps = {
+    type: "email",
+    name: "email",
+    id: "email",
+    value: `${form?.email ?? ""}`,
+    placeholder: "メールアドレス",
+    className: `border block mx-auto p-2 rounded-3xl w-4/5`,
+  };
+
+  const passwordProps = {
+    type: "password",
+    name: "password",
+    id: "password",
+    value: "",
+    placeholder: "パスワード",
+    className: `border block mx-auto p-2 rounded-3xl w-4/5`,
+  };
+
+  const passwordConfirmProps = {
+    type: "password",
+    name: "password_confirmation",
+    id: "password_confirmation",
+    value: "",
+    placeholder: "パスワード確認",
+    className: `border block mx-auto p-2 rounded-3xl w-4/5`,
+  };
+
   const disabledSubmit = () => {
     isSubmitting = !isSubmitting;
     setTimeout(() => {
@@ -47,10 +83,10 @@
     {#if form?.errors}
       <p class="text-red-500">{form.errors}</p>
     {/if}
-    <NameArea name={form?.name ?? ""} />
-    <EmailArea email={form?.email ?? ""} />
-    <PasswordArea />
-    <PasswordConfirmArea />
+    <NameArea {...nameProps} />
+    <EmailArea {...emailProps} />
+    <PasswordArea {...passwordProps} />
+    <PasswordConfirmArea {...passwordConfirmProps} />
     <SubmitButton disabled={isSubmitting}>登録</SubmitButton>
   </fieldset>
 </form>

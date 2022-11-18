@@ -12,6 +12,24 @@
 
   export let form: ActionData;
 
+  const emailProps = {
+    type: "email",
+    name: "email",
+    id: "email",
+    value: `${form?.email ?? ""}`,
+    placeholder: "メールアドレス",
+    className: `border block mx-auto p-2 rounded-3xl w-4/5`,
+  };
+
+  const passwordProps = {
+    type: "password",
+    name: "password",
+    id: "password",
+    value: "",
+    placeholder: "パスワード",
+    className: `border block mx-auto p-2 rounded-3xl w-4/5`,
+  };
+
   const disabledSubmit = () => {
     isSubmitting = !isSubmitting;
     setTimeout(() => {
@@ -44,8 +62,8 @@
     {#if form?.errors}
       <p class="text-red-500">{form.errors}</p>
     {/if}
-    <EmailArea email={form?.email ?? ""} />
-    <PasswordArea />
+    <EmailArea {...emailProps} />
+    <PasswordArea {...passwordProps} />
     <SubmitButton disabled={isSubmitting}>ログイン</SubmitButton>
   </fieldset>
 </form>

@@ -2,15 +2,33 @@
   import type { ActionData, PageData } from "./$types";
   import { page } from "$app/stores"
 	import { enhance } from "$app/forms";
-	import UserIdInput from "$lib/components/atoms/UserIdInput.svelte";
   import PostArea from "$lib/components/molecules/PostArea.svelte";
   import TitleArea from "$lib/components/molecules/TitleArea.svelte";
+	import Input from "$lib/components/atoms/Input.svelte";
 	import SubmitButton from "$lib/components/atoms/SubmitButton.svelte";
 
   let isSubmitting: boolean = false;
 
   export let form: ActionData;
   export let data: PageData;
+
+  const titleProps = {
+    type: "text",
+    name: "title",
+    id: "title",
+    value: `${data.post.title || form?.title}`,
+    placeholder: "タイトル",
+    className: `block border`,
+  };
+
+  const userIdProps = {
+    type: "hidden",
+    name: "user_id",
+    id: "user_id",
+    value: `${$page.data.user.id}`,
+    placeholder: "",
+    className: ``,
+  };
 
   const disabledSubmit = () => {
     isSubmitting = !isSubmitting;
@@ -30,8 +48,8 @@
   {#if form?.errors}
     <p class="text-red-500">{form.errors}</p>
   {/if}
-  <TitleArea title={data.post.title || form?.title} />
+  <TitleArea {...titleProps} />
   <PostArea body={data.post.body || form?.body} />
-  <UserIdInput id={$page.data.user.id} />
+  <Input {...userIdProps} />
   <SubmitButton disabled={isSubmitting} className="w-48">更新する</SubmitButton>
 </form>

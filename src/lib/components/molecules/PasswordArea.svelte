@@ -1,7 +1,23 @@
 <script lang="ts">
+  import Input from "../atoms/Input.svelte";
   import Label from "../atoms/Label.svelte";
-  import PasswordInput from "../atoms/PasswordInput.svelte";
+
+  export let type: string;
+  export let name: string;
+  export let id: string;
+  export let value: string | number;
+  export let placeholder: string;
+  export let className: string;
+
+  const passwordProps = {
+    type: type,
+    name: name,
+    id: id,
+    value: value,
+    placeholder: placeholder,
+    className: className,
+  };
 </script>
 
 <Label For="password">パスワード</Label>
-<PasswordInput />
+<Input {...passwordProps} />
