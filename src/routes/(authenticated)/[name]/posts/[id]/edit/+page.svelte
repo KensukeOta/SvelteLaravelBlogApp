@@ -5,6 +5,7 @@
 	import UserIdInput from "$lib/components/atoms/UserIdInput.svelte";
   import PostArea from "$lib/components/molecules/PostArea.svelte";
   import TitleArea from "$lib/components/molecules/TitleArea.svelte";
+	import SubmitButton from "$lib/components/atoms/SubmitButton.svelte";
 
   let isSubmitting: boolean = false;
 
@@ -32,5 +33,5 @@
   <TitleArea title={data.post.title || form?.title} />
   <PostArea body={data.post.body || form?.body} />
   <UserIdInput id={$page.data.user.id} />
-  <button type="submit" disabled={isSubmitting}>更新する</button>
+  <SubmitButton disabled={isSubmitting} className="w-48">更新する</SubmitButton>
 </form>

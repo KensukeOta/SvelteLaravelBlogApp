@@ -6,6 +6,7 @@
   import { axios } from "$lib/axios";
   import EmailArea from "$lib/components/molecules/EmailArea.svelte";
   import PasswordArea from "$lib/components/molecules/PasswordArea.svelte";
+	import SubmitButton from "$lib/components/atoms/SubmitButton.svelte";
 
   let isSubmitting: boolean = false;
 
@@ -45,6 +46,6 @@
     {/if}
     <EmailArea email={form?.email ?? ""} />
     <PasswordArea />
-    <button type="submit" disabled={isSubmitting} class="border bg-red-400 rounded-3xl w-1/3 text-white py-2 mt-2 hover:bg-red-300">ログイン</button>
+    <SubmitButton disabled={isSubmitting}>ログイン</SubmitButton>
   </fieldset>
 </form>

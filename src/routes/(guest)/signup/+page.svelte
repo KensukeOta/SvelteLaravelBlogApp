@@ -9,6 +9,7 @@
   import EmailArea from "$lib/components/molecules/EmailArea.svelte";
   import PasswordArea from "$lib/components/molecules/PasswordArea.svelte";
   import PasswordConfirmArea from "$lib/components/molecules/PasswordConfirmArea.svelte";
+	import SubmitButton from "$lib/components/atoms/SubmitButton.svelte";
 
   let isSubmitting: boolean = false;
 
@@ -50,6 +51,6 @@
     <EmailArea email={form?.email ?? ""} />
     <PasswordArea />
     <PasswordConfirmArea />
-    <button type="submit" disabled={isSubmitting} class="border bg-red-400 rounded-3xl w-1/3 text-white py-2 mt-2 hover:bg-red-300">登録</button>
+    <SubmitButton disabled={isSubmitting}>登録</SubmitButton>
   </fieldset>
 </form>
