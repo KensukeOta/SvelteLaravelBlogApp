@@ -1,5 +1,6 @@
 <script lang="ts">
   import { page } from "$app/stores";
+  import { isLeftSideBarShow } from "$lib/stores/isLeftSideBarShow";
   import LogoutButton from "../atoms/LogoutButton.svelte";
 	import PostSearchForm from "./PostSearchForm.svelte";
 
@@ -7,6 +8,10 @@
 
   const toggleIsShow = () => {
     isShow = !isShow
+  };
+
+  const toggleIsLeftSideBarShow = () => {
+    $isLeftSideBarShow = !$isLeftSideBarShow;
   };
 </script>
 
