@@ -1,5 +1,5 @@
 import type { Actions, PageServerLoad } from "./$types";
-import { invalid, redirect } from "@sveltejs/kit";
+import { fail, redirect } from "@sveltejs/kit";
 import { axios } from "$lib/axios";
 
 export const load: PageServerLoad = async ({ parent }) => {
@@ -26,7 +26,7 @@ export const actions: Actions = {
     }
 
     if (errors) {
-      return invalid(400, { email: values.get("email"), errors: errors });
+      return fail(400, { email: values.get("email"), errors: errors });
     }
   }
 };
