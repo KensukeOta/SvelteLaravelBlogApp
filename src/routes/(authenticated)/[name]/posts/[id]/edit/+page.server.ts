@@ -2,7 +2,7 @@ import type { Actions, PageServerLoad } from "./$types";
 import { fail, redirect } from "@sveltejs/kit";
 import { axios } from "$lib/axios";
 
-export const load: PageServerLoad = async ({ parent, params }) => {
+export const load: PageServerLoad = (async ({ parent, params }) => {
   const { user } = await parent();
   const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/posts/${params.id}`);
   const post = await res.data;
@@ -15,7 +15,7 @@ export const load: PageServerLoad = async ({ parent, params }) => {
     user: user,
     post: post,
   };
-};
+})
 
 export const actions: Actions = {
   default: async ({ request, params }) => {

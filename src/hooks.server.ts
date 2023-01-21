@@ -1,6 +1,6 @@
 import type { Handle } from "@sveltejs/kit";
 
-export const handle: Handle = async ({ event, resolve }) => {
+export const handle: Handle = (async ({ event, resolve }) => {
   if (!event.locals.user) {
     const res = await event.fetch(`${import.meta.env.VITE_API_URL}/api/user`, {
       headers: { Accept: "application/json" }
@@ -21,4 +21,4 @@ export const handle: Handle = async ({ event, resolve }) => {
   }
 
   return response;
-}
+})

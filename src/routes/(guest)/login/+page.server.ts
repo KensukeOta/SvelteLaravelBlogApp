@@ -2,7 +2,7 @@ import type { Actions, PageServerLoad } from "./$types";
 import { fail, redirect } from "@sveltejs/kit";
 import { axios } from "$lib/axios";
 
-export const load: PageServerLoad = async ({ parent }) => {
+export const load: PageServerLoad = (async ({ parent }) => {
   const { user } = await parent();
 
   if (user.name) {
@@ -12,7 +12,7 @@ export const load: PageServerLoad = async ({ parent }) => {
   return {
     user: user,
   };
-};
+})
 
 export const actions: Actions = {
   default: async ({ request, cookies }) => {
