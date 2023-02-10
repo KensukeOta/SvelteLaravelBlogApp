@@ -16,7 +16,7 @@
     type: "text",
     name: "title",
     id: "title",
-    value: `${data.post.title || form?.title}`,
+    value: `${form?.title || data.post.title}`,
     placeholder: "タイトル",
     className: `block border`,
   };
@@ -46,10 +46,10 @@
 
 <form method="POST" on:submit={disabledSubmit} use:enhance>
   {#if form?.errors}
-    <p class="text-red-500">{form.errors}</p>
+    <p class="text-red-500">{form.errors.message}</p>
   {/if}
   <TitleArea {...titleProps} />
-  <PostArea body={data.post.body || form?.body} />
+  <PostArea body={form?.body || data.post.body} />
   <Input {...userIdProps} />
   <SubmitButton disabled={isSubmitting} className="w-48">更新する</SubmitButton>
 </form>

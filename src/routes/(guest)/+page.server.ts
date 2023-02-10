@@ -1,10 +1,24 @@
 import type { PageServerLoad } from "./$types"
-import { axios } from "$lib/axios";
 
-export const load: PageServerLoad = (async ({ parent }) => {
+export const load: PageServerLoad = (async ({ fetch, parent }) => {
   const { user } = await parent();
-  const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/posts`);
-  const posts = await res.data;
+  let res;
+  let posts;
+
+  try {
+    res = await fetch(`${import.meta.env.VITE_API_URL}/api/posts`, {
+      headers: {
+        "Accept": "application/json",
+      }
+    });
+    if (!res.ok) {
+      const errors = await res.json();
+      throw new Error(errors.message);
+    }
+    posts = await res.json();
+  } catch (error) {
+    console.log(error);
+  }
 
   return {
     user: user,

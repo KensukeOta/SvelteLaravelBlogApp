@@ -45,7 +45,7 @@
 
 <form method="POST" on:submit={disabledSubmit} use:enhance>
   {#if form?.errors}
-    <p class="text-red-500">{form.errors}</p>
+    <p class="text-red-500">{form.errors.message}</p>
   {/if}
   <TitleArea {...titleProps} />
   <PostArea body={form?.body ?? ""} />

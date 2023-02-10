@@ -60,7 +60,7 @@
   <fieldset class="border-2 border-red-400 p-4 pt-2 rounded-3xl">
     <legend class="font-bold px-2">ログイン</legend>
     {#if form?.errors}
-      <p class="text-red-500">{form.errors}</p>
+      <p class="text-red-500">{form.errors.message}</p>
     {/if}
     <EmailArea {...emailProps} />
     <PasswordArea {...passwordProps} />

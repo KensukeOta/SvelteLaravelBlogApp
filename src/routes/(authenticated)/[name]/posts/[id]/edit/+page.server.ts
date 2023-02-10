@@ -1,11 +1,25 @@
 import type { Actions, PageServerLoad } from "./$types";
 import { fail, redirect } from "@sveltejs/kit";
-import { axios } from "$lib/axios";
 
-export const load: PageServerLoad = (async ({ parent, params }) => {
+export const load: PageServerLoad = (async ({ fetch, params, parent }) => {
   const { user } = await parent();
-  const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/posts/${params.id}`);
-  const post = await res.data;
+  let res;
+  let post;
+
+  try {
+    res = await fetch(`${import.meta.env.VITE_API_URL}/api/posts/${params.id}`, {
+      headers: {
+        "Accept": "application/json"
+      }
+    });
+    if (!res.ok) {
+      const errors = await res.json();
+      throw new Error(errors.message);
+    }
+    post = await res.json();
+  } catch (error) {
+    console.log(error);
+  }
 
   if (!user || user.id !== post.user_id) {
     throw redirect(307, "/");
@@ -18,7 +32,7 @@ export const load: PageServerLoad = (async ({ parent, params }) => {
 })
 
 export const actions: Actions = {
-  default: async ({ request, params }) => {
+  default: async ({ cookies, fetch, params, request }) => {
     const values = await request.formData();
     let errors;
     
@@ -27,9 +41,21 @@ export const actions: Actions = {
     const user_id = values.get("user_id");
 
     try {
-      await axios.patch(`${import.meta.env.VITE_API_URL}/api/posts/${params.id}/update`, { title, body, user_id });
-    } catch (error: any) {
-      errors = error.response.data.message;
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/posts/${params.id}/update`, {
+        method: "PATCH",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+          "X-XSRF-TOKEN": cookies.get("XSRF-TOKEN") ?? "",
+        },
+        body: JSON.stringify({ title, body, user_id })
+      });
+      if (!res.ok) {
+        errors = await res.json();
+        throw new Error(errors.message);
+      }
+    } catch (error) {
+      console.log(error);
     }
 
     if (errors) {

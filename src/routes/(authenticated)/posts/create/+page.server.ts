@@ -1,6 +1,5 @@
 import type { Actions, PageServerLoad } from "./$types";
 import { fail, redirect } from "@sveltejs/kit";
-import { axios } from "$lib/axios";
 
 export const load: PageServerLoad = (async ({ parent }) => {
   const { user } = await parent();
@@ -15,7 +14,7 @@ export const load: PageServerLoad = (async ({ parent }) => {
 })
 
 export const actions: Actions = {
-  default: async ({ request }) => {
+  default: async ({ cookies, fetch, request }) => {
     const values = await request.formData();
     let errors;
     
@@ -24,11 +23,23 @@ export const actions: Actions = {
     const user_id = values.get("user_id");
 
     try {
-      await axios.post(`${import.meta.env.VITE_API_URL}/api/posts/create`, { title, body, user_id });
-    } catch (error: any) {
-      errors = error.response.data.message;
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/posts/create`, {
+        method: "POST",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+          "X-XSRF-TOKEN": cookies.get("XSRF-TOKEN") ?? ""
+        },
+        body: JSON.stringify({ title, body, user_id })
+      });
+      if (!res.ok) {
+        errors = await res.json();
+        throw new Error(errors.message);
+      }
+    } catch (error) {
+      console.log(error);
     }
-
+    
     if (errors) {
       return fail(400, { title, body, errors });
     }
